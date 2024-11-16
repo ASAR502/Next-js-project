@@ -1,10 +1,11 @@
 //add a new product service
 
 import Cookies from "js-cookie";
+const baseUrl =process.env.NEXT_PUBLIC_API_URL;
 
 export const addNewProduct = async (formData) => {
   try {
-    const response = await fetch("/api/admin/add-product", {
+    const response = await fetch(`${baseUrl}/api/admin/add-product`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -23,7 +24,7 @@ export const addNewProduct = async (formData) => {
 
 export const getAllAdminProducts = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/admin/all-products", {
+    const res = await fetch(`${baseUrl}/api/admin/all-products`, {
       method: "GET",
       cache: "no-store",
     });
@@ -39,7 +40,7 @@ export const getAllAdminProducts = async () => {
 
 export const updateAProduct = async (formData) => {
   try {
-    const res = await fetch("/api/admin/update-product", {
+    const res = await fetch(`${baseUrl}/api/admin/update-product`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -59,7 +60,7 @@ export const updateAProduct = async (formData) => {
 
 export const deleteAProduct = async (id) => {
   try {
-    const res = await fetch(`/api/admin/delete-product?id=${id}`, {
+    const res = await fetch(`${baseUrl}/api/admin/delete-product?id=${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${Cookies.get("token")}`,
@@ -77,7 +78,7 @@ export const deleteAProduct = async (id) => {
 export const productByCategory = async (id) => {
   try {
     const res = await fetch(
-      `http://localhost:3000/api/admin/product-by-category?id=${id}`,
+      `${baseUrl}/api/admin/product-by-category?id=${id}`,
       {
         method: "GET",
         cache: "no-store",
@@ -107,7 +108,7 @@ export const productByCategory = async (id) => {
 export const productById = async (id) => {
   try {
     const res = await fetch(
-      `http://localhost:3000/api/admin/product-by-id?id=${id}`,
+      `${baseUrl}/api/admin/product-by-id?id=${id}`,
       {
         method: "GET",
         cache: "no-store",

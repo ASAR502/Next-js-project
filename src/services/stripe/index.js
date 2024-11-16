@@ -1,8 +1,8 @@
 import Cookies from "js-cookie";
-
+ const baseUrl =process.env.NEXT_PUBLIC_API_URL;
 export const callStripeSession = async (formData) => {
   try {
-    const res = await fetch("/api/stripe", {
+    const res = await fetch(`${baseUrl}/api/stripe`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

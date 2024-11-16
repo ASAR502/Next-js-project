@@ -1,8 +1,8 @@
 import Cookies from "js-cookie";
-
+const baseUrl =process.env.NEXT_PUBLIC_API_URL;
 export const addToCart = async (formData) => {
   try {
-    const res = await fetch("/api/cart/add-to-cart", {
+    const res = await fetch(`${baseUrl}/api/cart/add-to-cart`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -21,7 +21,7 @@ export const addToCart = async (formData) => {
 
 export const getAllCartItems = async (id) => {
   try {
-    const res = await fetch(`http://localhost:3000/api/cart/all-cart-items?id=${id}`, {
+    const res = await fetch(`${baseUrl}/api/cart/all-cart-items?id=${id}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${Cookies.get("token")}`,
@@ -38,7 +38,7 @@ export const getAllCartItems = async (id) => {
 
 export const deleteFromCart = async (id) => {
   try {
-    const res = await fetch(`/api/cart/delete-from-cart?id=${id}`, {
+    const res = await fetch(`${baseUrl}/api/cart/delete-from-cart?id=${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${Cookies.get("token")}`,
