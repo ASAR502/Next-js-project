@@ -84,11 +84,23 @@ export const productByCategory = async (id) => {
       }
     );
 
-    const data = await res.json();
+    // Check if the response is OK and has content
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
 
-    return data;
-  } catch (e) {
-    console.log(e);
+    const text = await res.text(); // Read response as text first
+
+    // If response body is not empty, parse it as JSON
+    if (text) {
+      return JSON.parse(text);
+    } else {
+      console.warn("Empty response body");
+      return {}; // Return an empty object if response is empty
+    }
+  } catch (error) {
+    console.log("Error in productByCategory:", error);
+    return null;
   }
 };
 

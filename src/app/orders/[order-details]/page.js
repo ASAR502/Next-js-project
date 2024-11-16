@@ -1,4 +1,4 @@
-`"use client";
+"use client";
 
 import { GlobalContext } from "@/context";
 import { getOrderDetails } from "@/services/order";
@@ -173,4 +173,3 @@ export default function OrderDetails() {
     </div>
   );
 }
-`
